@@ -10,7 +10,7 @@ export default function About() {
         {/* Portrait */}
         <div className="relative aspect-[4/5] bg-cream overflow-hidden">
           <Image
-            src="https://jalandharart.in/images/upload/sukhvinder.jpg"
+            src="/images/paintings/self-portrait.jpg"
             alt="Sukhwinder Singh — Oil Painter & Nature Artist"
             fill
             className="object-cover"

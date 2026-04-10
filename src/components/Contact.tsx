@@ -55,7 +55,7 @@ export default function Contact() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await fetch("https://formspree.io/f/REPLACE_WITH_ID", {
+      const res = await fetch("https://formspree.io/f/xjganonp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
