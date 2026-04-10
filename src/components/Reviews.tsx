@@ -75,22 +75,20 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
-      className="scroll-mt-20 py-20 md:py-28 px-6 bg-cream overflow-hidden"
+      className="scroll-mt-20 py-20 md:py-28 bg-cream overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-gold font-body mb-3">
-            From Our Collectors
-          </p>
-          <div className="w-[60px] h-[2px] bg-gold mx-auto mb-6" />
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal mb-3">
-            What Collectors Say
-          </h2>
-          <p className="text-charcoal/50 text-sm sm:text-base">
-            Reviews from those who carry a piece of his work home
-          </p>
-        </div>
+      {/* Header */}
+      <div className="text-center mb-12 max-w-7xl mx-auto px-6">
+        <p className="text-xs uppercase tracking-[0.2em] text-gold font-body mb-3">
+          From Our Collectors
+        </p>
+        <div className="w-[60px] h-[2px] bg-gold mx-auto mb-6" />
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal mb-3">
+          What Collectors Say
+        </h2>
+        <p className="text-charcoal/50 text-sm sm:text-base">
+          Reviews from those who carry a piece of his work home
+        </p>
       </div>
 
       {/* Marquee */}
