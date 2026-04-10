@@ -11,3 +11,18 @@
     font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   }
 }
+
+/* Infinite marquee scroll for Reviews section */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-scroll {
+  animation: marquee-scroll 30s linear infinite;
+  width: max-content;
+}

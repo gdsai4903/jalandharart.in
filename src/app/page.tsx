@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Achievements from "@/components/Achievements";
 import Gallery from "@/components/Gallery";
+import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FadeUp from "@/components/FadeUp";
@@ -19,6 +20,9 @@ export default function Home() {
         <Achievements />
       </FadeUp>
       <Gallery />
+      <FadeUp>
+        <Reviews />
+      </FadeUp>
       <FadeUp>
         <Contact />
       </FadeUp>
