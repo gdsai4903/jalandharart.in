@@ -72,9 +72,6 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function Reviews() {
-  // Duplicate cards for seamless infinite loop
-  const cards = [...reviews, ...reviews];
-
   return (
     <section
       id="reviews"
@@ -98,7 +95,7 @@ export default function Reviews() {
 
       {/* Marquee */}
       <div
-        className="relative"
+        className="relative overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
@@ -106,10 +103,17 @@ export default function Reviews() {
             "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
         }}
       >
-        <div className="flex gap-6 marquee-scroll hover:[animation-play-state:paused]">
-          {cards.map((review, i) => (
-            <ReviewCard key={`${review.id}-${i}`} review={review} />
-          ))}
+        <div className="marquee-scroll">
+          <div className="flex gap-6">
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
+          <div className="flex gap-6">
+            {reviews.map((review) => (
+              <ReviewCard key={`clone-${review.id}`} review={review} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
