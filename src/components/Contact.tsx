@@ -43,6 +43,16 @@ function FacebookIcon() {
   );
 }
 
+function InstagramIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold flex-shrink-0">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
@@ -124,6 +134,17 @@ export default function Contact() {
                 className="text-charcoal/70 hover:text-gold text-sm transition-colors"
               >
                 facebook.com/artsukhvinder
+              </a>
+            </div>
+            <div className="flex items-center gap-4">
+              <InstagramIcon />
+              <a
+                href="https://www.instagram.com/artsukhvinder/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-charcoal/70 hover:text-gold text-sm transition-colors"
+              >
+                instagram.com/artsukhvinder
               </a>
             </div>
           </div>
