@@ -42,11 +42,15 @@ function TrophyIcon() {
   );
 }
 
+const INITIAL_COUNT = 9;
+
 export default function Achievements() {
   const [active, setActive] = useState<AwardCategory | "all">("all");
+  const [expanded, setExpanded] = useState(false);
 
   const filtered =
     active === "all" ? awards : awards.filter((a) => a.category === active);
+  const visible = expanded ? filtered : filtered.slice(0, INITIAL_COUNT);
 
   return (
     <section
@@ -86,27 +90,53 @@ export default function Achievements() {
         </div>
 
         {/* Awards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((award) => (
-            <div
-              key={award.id}
-              className="group border border-charcoal/10 p-6 hover:-translate-y-1 hover:border-l-4 hover:border-l-gold transition-all duration-200"
-            >
-              <div className="flex items-end gap-2 mb-3">
-                <TrophyIcon />
-                {award.Type && (
-                  <span className="inline-block bg-gold/15 text-gold text-xs px-2 py-0.5 tracking-wide rounded-sm mb-1">
-                    {award.Type}
-                  </span>
-                )}
+        <div className="transition-all duration-500 overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {visible.map((award) => (
+              <div
+                key={award.id}
+                className="group border border-charcoal/10 p-6 hover:-translate-y-1 hover:border-l-4 hover:border-l-gold transition-all duration-200"
+              >
+                <div className="flex items-end gap-2 mb-3">
+                  <TrophyIcon />
+                  {award.Type && (
+                    <span className="inline-block bg-gold/15 text-gold text-xs px-2 py-0.5 tracking-wide rounded-sm mb-1">
+                      {award.Type}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-heading text-lg sm:text-xl font-semibold text-charcoal mb-1">
+                  {award.title} ({award.year})
+                </h3>
+                <p className="text-charcoal/50 text-sm mb-3">{award.body}</p>
               </div>
-              <h3 className="font-heading text-lg sm:text-xl font-semibold text-charcoal mb-1">
-                {award.title} ({award.year})
-              </h3>
-              <p className="text-charcoal/50 text-sm mb-3">{award.body}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {filtered.length > INITIAL_COUNT && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="w-full sm:w-auto border border-gold text-gold px-8 py-3 text-sm tracking-wide hover:bg-gold hover:text-white transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              {expanded ? "Show less" : `See all ${filtered.length} awards`}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* Notable Collections */}
         <div className="mt-20 text-center">

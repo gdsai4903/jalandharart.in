@@ -4,8 +4,13 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { paintings } from "@/data/gallery";
 
+const INITIAL_COUNT = 6;
+
 export default function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
+
+  const visible = expanded ? paintings : paintings.slice(0, INITIAL_COUNT);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -64,32 +69,58 @@ export default function Gallery() {
         </div>
 
         {/* Masonry grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-          {paintings.map((painting, index) => (
-            <div
-              key={painting.id}
-              className="break-inside-avoid group relative cursor-pointer overflow-hidden"
-              onClick={() => openLightbox(index)}
-            >
-              <Image
-                src={painting.src}
-                alt={painting.title}
-                width={painting.width}
-                height={painting.height}
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/50 transition-colors duration-300 flex items-end p-4">
-                <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <p className="text-white font-heading text-lg font-semibold">
-                    {painting.title}
-                  </p>
-                  <p className="text-white/70 text-sm">{painting.medium}</p>
+        <div className="transition-all duration-500 overflow-hidden">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {visible.map((painting, index) => (
+              <div
+                key={painting.id}
+                className="break-inside-avoid group relative cursor-pointer overflow-hidden"
+                onClick={() => openLightbox(index)}
+              >
+                <Image
+                  src={painting.src}
+                  alt={painting.title}
+                  width={painting.width}
+                  height={painting.height}
+                  className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/50 transition-colors duration-300 flex items-end p-4">
+                  <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    <p className="text-white font-heading text-lg font-semibold">
+                      {painting.title}
+                    </p>
+                    <p className="text-white/70 text-sm">{painting.medium}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {paintings.length > INITIAL_COUNT && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="w-full sm:w-auto border border-gold text-gold px-8 py-3 text-sm tracking-wide hover:bg-gold hover:text-white transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              {expanded ? "Show less" : "View full gallery"}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         <p className="text-center text-charcoal/40 italic mt-10 text-sm">
           Additional works available on request.
