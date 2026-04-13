@@ -46,7 +46,7 @@ export const awards: Award[] = [
     body: "State Government of Punjab",
     year: "2019",
     category: "state",
-    Type: "Cash Award",
+    Type: "",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ export const awards: Award[] = [
     body: "IAFA Gallery, Amritsar",
     year: "2014",
     category: "national",
-    Type: "Cash Award",
+    Type: "",
   },
   {
     id: 7,

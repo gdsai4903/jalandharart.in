@@ -94,9 +94,11 @@ export default function Achievements() {
             >
               <div className="flex items-end gap-2 mb-3">
                 <TrophyIcon />
-                <span className="inline-block bg-gold/15 text-gold text-xs px-2 py-0.5 tracking-wide rounded-sm mb-1">
-                  {award.Type}
-                </span>
+                {award.Type && (
+                  <span className="inline-block bg-gold/15 text-gold text-xs px-2 py-0.5 tracking-wide rounded-sm mb-1">
+                    {award.Type}
+                  </span>
+                )}
               </div>
               <h3 className="font-heading text-lg sm:text-xl font-semibold text-charcoal mb-1">
                 {award.title} ({award.year})
