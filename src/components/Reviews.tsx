@@ -72,33 +72,28 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function Reviews() {
-  // Duplicate cards for seamless infinite loop
-  const cards = [...reviews, ...reviews];
-
   return (
     <section
       id="reviews"
-      className="scroll-mt-20 py-20 md:py-28 px-6 bg-cream overflow-hidden"
+      className="scroll-mt-20 py-20 md:py-28 bg-cream overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-gold font-body mb-3">
-            From Our Collectors
-          </p>
-          <div className="w-[60px] h-[2px] bg-gold mx-auto mb-6" />
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal mb-3">
-            What Collectors Say
-          </h2>
-          <p className="text-charcoal/50 text-sm sm:text-base">
-            Reviews from those who carry a piece of his work home
-          </p>
-        </div>
+      {/* Header */}
+      <div className="text-center mb-12 max-w-7xl mx-auto px-6">
+        <p className="text-xs uppercase tracking-[0.2em] text-gold font-body mb-3">
+          From Our Collectors
+        </p>
+        <div className="w-[60px] h-[2px] bg-gold mx-auto mb-6" />
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-charcoal mb-3">
+          What Collectors Say
+        </h2>
+        <p className="text-charcoal/50 text-sm sm:text-base">
+          Reviews from those who carry a piece of his work home
+        </p>
       </div>
 
       {/* Marquee */}
       <div
-        className="relative"
+        className="relative overflow-hidden"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
@@ -106,10 +101,17 @@ export default function Reviews() {
             "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
         }}
       >
-        <div className="flex gap-6 marquee-scroll hover:[animation-play-state:paused]">
-          {cards.map((review, i) => (
-            <ReviewCard key={`${review.id}-${i}`} review={review} />
-          ))}
+        <div className="marquee-scroll">
+          <div className="flex gap-6">
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
+          <div className="flex gap-6">
+            {reviews.map((review) => (
+              <ReviewCard key={`clone-${review.id}`} review={review} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

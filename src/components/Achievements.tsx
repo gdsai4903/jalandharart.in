@@ -16,7 +16,7 @@ const collections = [
   "Punjab Technical University, Jalandhar",
   "Gurudwara Singh Sabha Multimedia Museum",
   "Bank of Punjab Calendars (1999, 2008)",
-  "Private collections across India & abroad",
+  "Private collections across India, Canada, America, Australia & More",
 ];
 
 function TrophyIcon() {
@@ -92,18 +92,18 @@ export default function Achievements() {
               key={award.id}
               className="group border border-charcoal/10 p-6 hover:-translate-y-1 hover:border-l-4 hover:border-l-gold transition-all duration-200"
             >
-              <div className="mb-3">
+              <div className="flex items-end gap-2 mb-3">
                 <TrophyIcon />
+                {award.Type && (
+                  <span className="inline-block bg-gold/15 text-gold text-xs px-2 py-0.5 tracking-wide rounded-sm mb-1">
+                    {award.Type}
+                  </span>
+                )}
               </div>
               <h3 className="font-heading text-lg sm:text-xl font-semibold text-charcoal mb-1">
-                {award.title}
+                {award.title} ({award.year})
               </h3>
               <p className="text-charcoal/50 text-sm mb-3">{award.body}</p>
-              {award.year && (
-                <span className="inline-block bg-gold/15 text-gold text-xs px-3 py-1 tracking-wide">
-                  {award.year}
-                </span>
-              )}
             </div>
           ))}
         </div>

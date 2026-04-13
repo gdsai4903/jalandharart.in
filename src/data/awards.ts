@@ -12,6 +12,7 @@ export interface Award {
   body: string;
   year: string;
   category: AwardCategory;
+  Type: string;
 }
 
 export const awards: Award[] = [
@@ -21,6 +22,7 @@ export const awards: Award[] = [
     body: "Indian Academy of Fine Arts, Amritsar",
     year: "2024",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ export const awards: Award[] = [
     body: "State Government of Punjab",
     year: "2022",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ export const awards: Award[] = [
     body: "IAFA Gallery, Amritsar",
     year: "2020",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 4,
@@ -42,6 +46,7 @@ export const awards: Award[] = [
     body: "State Government of Punjab",
     year: "2019",
     category: "state",
+    Type: "",
   },
   {
     id: 5,
@@ -49,6 +54,7 @@ export const awards: Award[] = [
     body: "NDMC, New Delhi",
     year: "2014",
     category: "national",
+    Type: "Cash Award",
   },
   {
     id: 6,
@@ -56,6 +62,7 @@ export const awards: Award[] = [
     body: "IAFA Gallery, Amritsar",
     year: "2014",
     category: "national",
+    Type: "",
   },
   {
     id: 7,
@@ -63,6 +70,7 @@ export const awards: Award[] = [
     body: "Punjab Lalit Kala Akademi, Chandigarh",
     year: "2009",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 8,
@@ -70,6 +78,7 @@ export const awards: Award[] = [
     body: "Punjab Lalit Kala Academy, Virsa Vihar, Jalandhar",
     year: "2007",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 9,
@@ -77,6 +86,7 @@ export const awards: Award[] = [
     body: "Bank of Punjab",
     year: "2007",
     category: "institutional",
+    Type: "Cash Award",
   },
   {
     id: 10,
@@ -84,6 +94,7 @@ export const awards: Award[] = [
     body: "State Government of Punjab",
     year: "2003",
     category: "state",
+    Type: "Cash Award",
   },
   {
     id: 11,
@@ -91,5 +102,6 @@ export const awards: Award[] = [
     body: "Bank of Punjab",
     year: "1998",
     category: "institutional",
+    Type: "Cash Award",
   },
 ];
